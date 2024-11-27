@@ -1,0 +1,29 @@
+{
+  "title": "Extract Images",
+  "description": "Extract images from any public website with just a URL.",
+  "extractButton": "Extract",
+  "errorTitle": "Error",
+  "urlError": "Please enter a valid URL.",
+  "browserError": "Our browser is busy right now. Please try again later.",
+  "extractError": "An error occurred while extracting images. Please try again.",
+  "noImages": "No images found. Please try another URL.",
+  "previewNotAvailable": "Preview not available",
+  "features": [
+    {
+      "title": "Blazing Fast",
+      "description": "Extract images from any website in seconds. No need to wait for minutes."
+    },
+    {
+      "title": "Find Everything Image",
+      "description": "We find all the images on the website, not just the ones you see. No image is left behind."
+    },
+    {
+      "title": "No Sign Up Required",
+      "description": "No need to sign up or log in. Just paste the URL and extract images."
+    },
+    {
+      "title": "Image Analysis",
+      "description": "We analyze the images and provide you with the image size, format, and dimensions."
+    }
+  ]
+}

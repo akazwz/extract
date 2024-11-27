@@ -1,0 +1,14 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "extract"
+compatibility_date = "2023-05-18"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "./build/client"
+
+browser = { binding = "BROWSER" }
+
+[vars]
+WS_ENDPOINT = "wss://wsproxy.fly.dev"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "xxx"

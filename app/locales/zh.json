@@ -1,0 +1,29 @@
+{
+  "title": "提取图片",
+  "description": "只需一个 URL，即可从任何公共网站提取图片。",
+  "extractButton": "提取",
+  "errorTitle": "错误",
+  "urlError": "请输入有效的 URL。",
+  "browserError": "我们的浏览器现在很忙。请稍后再试。",
+  "extractError": "提取图片时发生错误。请重试。",
+  "noImages": "未找到图片。请尝试其他 URL。",
+  "previewNotAvailable": "预览不可用",
+  "features": [
+    {
+      "title": "速度快",
+      "description": "从任何网站提取图片只需几秒钟。无需等待几分钟。"
+    },
+    {
+      "title": "找到所有图片",
+      "description": "我们找到网站上的所有图片，而不仅仅是您看到的那些。没有任何图片被遗漏。"
+    },
+    {
+      "title": "无需注册",
+      "description": "无需注册或登录。只需粘贴 URL 并提取图片。"
+    },
+    {
+      "title": "图片分析",
+      "description": "我们分析图片并为您提供图片大小、格式和尺寸。"
+    }
+  ]
+}
