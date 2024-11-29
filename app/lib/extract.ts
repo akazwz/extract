@@ -5,6 +5,28 @@ import puppeteer, {
 } from "@cloudflare/puppeteer";
 import { ExtractImageData } from "~/types";
 
+// Common image file extensions
+const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.ico', '.svg'];
+
+// Check if URL is potentially an image based on extension
+function isImageUrl(url: string): boolean {
+  const urlLower = url.toLowerCase();
+  return IMAGE_EXTENSIONS.some(ext => urlLower.endsWith(ext));
+}
+
+// Get mime type from URL extension
+function getMimeTypeFromUrl(url: string): string | null {
+  const urlLower = url.toLowerCase();
+  if (urlLower.endsWith('.jpg') || urlLower.endsWith('.jpeg')) return 'image/jpeg';
+  if (urlLower.endsWith('.png')) return 'image/png';
+  if (urlLower.endsWith('.gif')) return 'image/gif';
+  if (urlLower.endsWith('.webp')) return 'image/webp';
+  if (urlLower.endsWith('.bmp')) return 'image/bmp';
+  if (urlLower.endsWith('.ico')) return 'image/x-icon';
+  if (urlLower.endsWith('.svg')) return 'image/svg+xml';
+  return null;
+}
+
 export async function extractImagesFromURL(
   browser: Browser,
   url: string,
@@ -13,9 +35,12 @@ export async function extractImagesFromURL(
     let images: ExtractImageData[] = [];
     const page = await browser.newPage();
     page.on("response", async (response) => {
+      const responseUrl = response.url();
       const contentType = response.headers()["content-type"];
-      if (contentType && contentType.startsWith("image")) {
-        const src = response.url();
+      const isImage = contentType?.startsWith("image") || isImageUrl(responseUrl);
+      
+      if (isImage) {
+        const src = responseUrl;
         let size = Number(response.headers()["content-length"]);
         if (src.startsWith("data:")) {
           size = src.length;
@@ -25,7 +50,7 @@ export async function extractImagesFromURL(
         images.push({
           src,
           size,
-          mimeType: contentType,
+          mimeType: contentType || getMimeTypeFromUrl(responseUrl) || 'image/unknown',
           width,
           height,
           decoded: false,
